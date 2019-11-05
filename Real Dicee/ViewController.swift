@@ -98,7 +98,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
         
         // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-            if let diceNodeOld1 = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
+            // if let diceNodeOld1 = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
+            if let diceNodeOld1 = diceScene.rootNode.childNode(withName: "Circle", recursively: true) {
                  print("--------x 1 = ", diceLocations?[0].diceLocx as Any,
                           " y 1 = ", diceLocations?[0].diceLocy as Any,
                           " z 1 = ", diceLocations?[0].diceLocz as Any
