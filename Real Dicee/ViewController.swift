@@ -9,13 +9,19 @@
 import UIKit
 import SceneKit
 import ARKit
+import RealmSwift
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
+    let realm = try! Realm() // I add nov-5-2019
+    
+    var diceLocations: Results<DiceLocation>? // I add nov-5-2019
+    
     @IBOutlet var sceneView: ARSCNView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadDiceLocations() // I add nov-5-2019 (load previous dice based on previous locations
         
         // Set the view's delegate
         sceneView.delegate = self
@@ -23,29 +29,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         self.sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
 
 //        let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
-
 //        let sphere = SCNSphere(radius: 0.2)
-//
 //        let material = SCNMaterial()
-//
 //        material.diffuse.contents = UIImage(named: "art.scnassets/moon.jpg")
-//
 //        sphere.materials = [material]
-//
 //        let node = SCNNode()
-//
 //        node.position = SCNVector3(x: 0, y: 0.1, z: -0.5)
-//
 //        node.geometry = sphere
-//
 //        sceneView.scene.rootNode.addChildNode(node)
 
         sceneView.autoenablesDefaultLighting = true
-
       
-        
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +74,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 // Create a new scene
                 let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
 
+                // I add nov-5-2019    add previous dices onto scene
+                if let diceNodeOld = diceScene.rootNode.childNode(withName: "Dice", recursively: false) {
+                    
+                    diceNodeOld.position = SCNVector3(
+                        x: (diceLocations?[0].diceLocx)!,
+                        y: (diceLocations?[0].diceLocy)!,
+                        z: (diceLocations?[0].diceLocz)!
+                    )
+                    sceneView.scene.rootNode.addChildNode(diceNodeOld)
+                } // I add nov-5-2019    add previous dices onto scene
+                
+                
                 if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
 
                     diceNode.position = SCNVector3(
@@ -88,6 +94,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         z: hitResult.worldTransform.columns.3.z
                     )
 
+                    // I add nov-5-2019
+                    // save dice location to Realm database
+                    let diceLocation = DiceLocation()
+                    diceLocation.diceLocx = hitResult.worldTransform.columns.3.x
+                    diceLocation.diceLocy = hitResult.worldTransform.columns.3.y
+                    diceLocation.diceLocz = hitResult.worldTransform.columns.3.z
+                    self.save(diceLocation: diceLocation)
+                    
+                    
                     sceneView.scene.rootNode.addChildNode(diceNode)
                     
                     let randomX = Float((arc4random_uniform(4) + 1)) * (Float.pi/2)
@@ -95,11 +110,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     let randomZ = Float((arc4random_uniform(4) + 1)) * (Float.pi/2)
                     
                     diceNode.runAction(SCNAction.rotateBy(x: CGFloat(randomX * 5), y: 0, z: CGFloat(randomZ * 5), duration: 0.5))
-
                 }
-                
             }
-            
         }
     }
     
@@ -130,9 +142,23 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         } else {
             return
         }
-        
         //guard let planeAnchor = anchor as? ARPlaneAnchor else {return}
     }
-
-
+    
+    //---------------------------------------------
+    // save dice node location
+    //---------------------------------------------
+    //MARK: - Data Manipulation Methods
+    func save(diceLocation: DiceLocation) {
+        do {
+            try realm.write { realm.add(diceLocation) }
+        } catch { print("Error saving category \(error)") }
+        // tableView.reloadData()
+    }
+    
+    func loadDiceLocations() {
+        diceLocations  = realm.objects(DiceLocation.self)
+        print("number of dice in Realm database = ", diceLocations?.count ?? 0)
+        // tableView.reloadData()
+    }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift // I add nov-5-2019
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // I add nov-5-2019 ..............................
+        print("where Realm db located for Dice Loc ",Realm.Configuration.defaultConfiguration.fileURL)
+        //where Realm db located for Dice Loc  Optional
+        
+        //on my phone: (file:///var/mobile/Containers/Data/Application/2D2558AA-B27D-4515-BE7B-E29A5AC0A38A/Documents/default.realm)
+        
+        // on mac book air:  /Users/ai87/Library/Developer/CoreSimulator/Devices/1D4DBF80-E8A8-4B8A-A4CA-16B896BEE6D6/data/Containers/Data/Application/A38F7FF0-4AA0-4C6C-8B07-0B1D4D07DD58/Documents/default.realm
+        
+        
+        do {
+            _ = try Realm()
+        } catch {
+            print("Error initialising new realm, \(error)")
+        }
+        // I add nov-5-2019 ..............................
+        
         return true
     }
 
