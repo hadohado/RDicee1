@@ -13,6 +13,8 @@ import RealmSwift
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
+    var addOldDice = true
+    
     let realm = try! Realm() // I add nov-5-2019
     
     var diceLocations: Results<DiceLocation>? // I add nov-5-2019
@@ -69,13 +71,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             let results = sceneView.hitTest(touchLocation, types: .existingPlaneUsingExtent)
             
-            if let hitResult = results.first {
+            // I add I move this from inside if() below to up here nov-5-5019
+            // Create a new scene
+            let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
+            
+            ///        if let hitResult = results.first {
 
                 // Create a new scene
-                let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
+                // let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
 
+                if addOldDice == true {
                 // I add nov-5-2019    add previous dices onto scene
                 if let diceNodeOld = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
+                    
                     if let mycount = diceLocations?.count {
                         print("-------- mycount = ", mycount)
                     for i in 0...(mycount - 1) {
@@ -89,35 +97,33 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     }
                     }
                     
+//                    print("--------x = ", diceLocations?[0].diceLocx )
+//                    print("--------x = ", diceLocations?[1].diceLocx )
+                    
 //                    diceNodeOld.position = SCNVector3(
-//                        x: (diceLocations?[0].diceLocx)!,
-//                        y: (diceLocations?[0].diceLocy)!,
-//                        z: (diceLocations?[0].diceLocz)!
+//                        x: (diceLocations?[1].diceLocx)!,
+//                        y: (diceLocations?[1].diceLocy)!,
+//                        z: (diceLocations?[1].diceLocz)!
 //                    )
 //                    sceneView.scene.rootNode.addChildNode(diceNodeOld)
-                    
-                    
-                    
                 } // I add nov-5-2019    add previous dices onto scene
+                } // if addOldDice == true
                 
-                
+            if let hitResult = results.first {
+                if addOldDice == false {
                 if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
-
                     diceNode.position = SCNVector3(
                         x: hitResult.worldTransform.columns.3.x,
                         y: hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius,
                         z: hitResult.worldTransform.columns.3.z
                     )
 
-                    // I add nov-5-2019
-                    // save dice location to Realm database
+                    // I add nov-5-2019  save dice location to Realm database
                     let diceLocation = DiceLocation()
                     diceLocation.diceLocx = hitResult.worldTransform.columns.3.x
                     diceLocation.diceLocy = hitResult.worldTransform.columns.3.y
                     diceLocation.diceLocz = hitResult.worldTransform.columns.3.z
                     self.save(diceLocation: diceLocation)
-                    
-                    
                     sceneView.scene.rootNode.addChildNode(diceNode)
                     
                     let randomX = Float((arc4random_uniform(4) + 1)) * (Float.pi/2)
@@ -126,6 +132,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     
                     diceNode.runAction(SCNAction.rotateBy(x: CGFloat(randomX * 5), y: 0, z: CGFloat(randomZ * 5), duration: 0.5))
                 }
+            } // loop
             }
         }
     }
