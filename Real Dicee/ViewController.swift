@@ -42,6 +42,41 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
         sceneView.autoenablesDefaultLighting = true
       
+        //***************************************************************
+        // I add I move this from inside if() below to up here nov-5-5019
+        // Create a new scene
+        let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
+        
+        ///        if let hitResult = results.first {
+
+            // Create a new scene
+            // let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
+
+            if addOldDice == true {
+            // I add nov-5-2019    add previous dices onto scene
+            // if let diceNodeOld = diceScene.rootNode.childNode(withName: "Dice", recursively: false) {
+            if let diceNodeOld = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
+                
+                if let mycount = diceLocations?.count {
+                    print("-------- mycount = ", mycount)
+                for i in 0...(mycount - 1) {
+                    print("--------x = ", diceLocations?[i].diceLocx as Any,
+                          " y = ", diceLocations?[i].diceLocy as Any,
+                          " z = ", diceLocations?[i].diceLocz as Any
+                     )
+                    diceNodeOld.position = SCNVector3(
+                        x: (diceLocations?[i].diceLocx)!,
+                        y: (diceLocations?[i].diceLocy)!,
+                        z: (diceLocations?[i].diceLocz)!
+                    )
+                    sceneView.scene.rootNode.addChildNode(diceNodeOld)
+                }
+                }
+                
+            } // I add nov-5-2019    add previous dices onto scene
+            } // if addOldDice == true
+        
+        //***************************************************************
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +89,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Run the view's session
         sceneView.session.run(configuration)
+        
+        
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -70,11 +108,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let touchLocation = touch.location(in: sceneView)
             
             let results = sceneView.hitTest(touchLocation, types: .existingPlaneUsingExtent)
-            
+ 
+
             // I add I move this from inside if() below to up here nov-5-5019
             // Create a new scene
             let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
-            
+
+
+/*
             ///        if let hitResult = results.first {
 
                 // Create a new scene
@@ -97,20 +138,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     }
                     }
                     
-//                    print("--------x = ", diceLocations?[0].diceLocx )
-//                    print("--------x = ", diceLocations?[1].diceLocx )
-                    
-//                    diceNodeOld.position = SCNVector3(
-//                        x: (diceLocations?[1].diceLocx)!,
-//                        y: (diceLocations?[1].diceLocy)!,
-//                        z: (diceLocations?[1].diceLocz)!
-//                    )
-//                    sceneView.scene.rootNode.addChildNode(diceNodeOld)
                 } // I add nov-5-2019    add previous dices onto scene
                 } // if addOldDice == true
-                
+*/
+            
             if let hitResult = results.first {
-                if addOldDice == false {
+                // if addOldDice == false {
+                if addOldDice == true {
                 if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
                     diceNode.position = SCNVector3(
                         x: hitResult.worldTransform.columns.3.x,
