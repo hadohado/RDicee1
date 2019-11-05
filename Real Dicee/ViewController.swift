@@ -47,6 +47,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Create a new scene
         let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
         
+        let lampScene = SCNScene(named: "art.scnassets/lamp_dae.scn")!
         ///        if let hitResult = results.first {
 
             // Create a new scene
@@ -77,6 +78,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //        // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  
         // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+        let ohOh = true
+        if ohOh {
             if let diceNodeOld = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
                  print("--------x = ", diceLocations?[0].diceLocx as Any,
                           " y = ", diceLocations?[0].diceLocy as Any,
@@ -95,11 +98,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 )
                 sceneView.scene.rootNode.addChildNode(diceNodeOld)
             } // I add nov-5-2019    add previous dices onto scene
+        }
         // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
         
         // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
             // if let diceNodeOld1 = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
-            if let diceNodeOld1 = diceScene.rootNode.childNode(withName: "Circle", recursively: true) {
+            if let diceNodeOld1 = lampScene.rootNode.childNode(withName: "Circle", recursively: true) {
                  print("--------x 1 = ", diceLocations?[0].diceLocx as Any,
                           " y 1 = ", diceLocations?[0].diceLocy as Any,
                           " z 1 = ", diceLocations?[0].diceLocz as Any
