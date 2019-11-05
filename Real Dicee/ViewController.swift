@@ -55,25 +55,66 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             if addOldDice == true {
             // I add nov-5-2019    add previous dices onto scene
             // if let diceNodeOld = diceScene.rootNode.childNode(withName: "Dice", recursively: false) {
+        
+//        // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+//            if let diceNodeOld = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
+//                if let mycount = diceLocations?.count {
+//                    print("-------- mycount = ", mycount)
+//                for i in 0...(mycount - 1) {
+//                    print("--------x = ", diceLocations?[i].diceLocx as Any,
+//                          " y = ", diceLocations?[i].diceLocy as Any,
+//                          " z = ", diceLocations?[i].diceLocz as Any
+//                     )
+//                    diceNodeOld.position = SCNVector3(
+//                        x: (diceLocations?[i].diceLocx)!,
+//                        y: (diceLocations?[i].diceLocy)!,
+//                        z: (diceLocations?[i].diceLocz)!
+//                    )
+//                    sceneView.scene.rootNode.addChildNode(diceNodeOld)
+//                }
+//                }
+//            } // I add nov-5-2019    add previous dices onto scene
+//        // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+ 
+        // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
             if let diceNodeOld = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
-                
-                if let mycount = diceLocations?.count {
-                    print("-------- mycount = ", mycount)
-                for i in 0...(mycount - 1) {
-                    print("--------x = ", diceLocations?[i].diceLocx as Any,
-                          " y = ", diceLocations?[i].diceLocy as Any,
-                          " z = ", diceLocations?[i].diceLocz as Any
+                 print("--------x = ", diceLocations?[0].diceLocx as Any,
+                          " y = ", diceLocations?[0].diceLocy as Any,
+                          " z = ", diceLocations?[0].diceLocz as Any
                      )
                     diceNodeOld.position = SCNVector3(
-                        x: (diceLocations?[i].diceLocx)!,
-                        y: (diceLocations?[i].diceLocy)!,
-                        z: (diceLocations?[i].diceLocz)!
+                        x: (diceLocations?[0].diceLocx)!,
+                        y: (diceLocations?[0].diceLocy)!,
+                        z: (diceLocations?[0].diceLocz)!
                     )
                     sceneView.scene.rootNode.addChildNode(diceNodeOld)
-                }
-                }
-                
+                diceNodeOld.position = SCNVector3(
+                    x: (diceLocations?[2].diceLocx)!,
+                    y: (diceLocations?[2].diceLocy)!,
+                    z: (diceLocations?[2].diceLocz)!
+                )
+                sceneView.scene.rootNode.addChildNode(diceNodeOld)
             } // I add nov-5-2019    add previous dices onto scene
+        // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+        
+        // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+            if let diceNodeOld1 = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
+                 print("--------x 1 = ", diceLocations?[0].diceLocx as Any,
+                          " y 1 = ", diceLocations?[0].diceLocy as Any,
+                          " z 1 = ", diceLocations?[0].diceLocz as Any
+                     )
+                    diceNodeOld1.position = SCNVector3(
+                        x: (diceLocations?[1].diceLocx)!,
+                        y: (diceLocations?[1].diceLocy)!,
+                        z: (diceLocations?[1].diceLocz)!
+                    )
+                    sceneView.scene.rootNode.addChildNode(diceNodeOld1)
+            } // I add nov-5-2019    add previous dices onto scene
+            else {
+                print ("no diceNodeOld1 !!! ")
+                }
+        // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+                
             } // if addOldDice == true
         
         //***************************************************************
@@ -143,8 +184,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 */
             
             if let hitResult = results.first {
-                // if addOldDice == false {
-                if addOldDice == true {
+                if addOldDice == false {
+                // if addOldDice == true {
                 if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
                     diceNode.position = SCNVector3(
                         x: hitResult.worldTransform.columns.3.x,
@@ -155,7 +196,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     // I add nov-5-2019  save dice location to Realm database
                     let diceLocation = DiceLocation()
                     diceLocation.diceLocx = hitResult.worldTransform.columns.3.x
-                    diceLocation.diceLocy = hitResult.worldTransform.columns.3.y
+                    diceLocation.diceLocy = hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius
                     diceLocation.diceLocz = hitResult.worldTransform.columns.3.z
                     self.save(diceLocation: diceLocation)
                     sceneView.scene.rootNode.addChildNode(diceNode)
