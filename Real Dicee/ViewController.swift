@@ -30,16 +30,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         self.sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
 
-//        let cube = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
-//        let sphere = SCNSphere(radius: 0.2)
-//        let material = SCNMaterial()
-//        material.diffuse.contents = UIImage(named: "art.scnassets/moon.jpg")
-//        sphere.materials = [material]
-//        let node = SCNNode()
-//        node.position = SCNVector3(x: 0, y: 0.1, z: -0.5)
-//        node.geometry = sphere
-//        sceneView.scene.rootNode.addChildNode(node)
-
         sceneView.autoenablesDefaultLighting = true
       
         //***************************************************************
@@ -47,80 +37,48 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Create a new scene
         let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
         
+        let oldDiceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
+        
         let lampScene = SCNScene(named: "art.scnassets/lamp_dae.scn")!
-        ///        if let hitResult = results.first {
-
-            // Create a new scene
-            // let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
 
             if addOldDice == true {
-            // I add nov-5-2019    add previous dices onto scene
-            // if let diceNodeOld = diceScene.rootNode.childNode(withName: "Dice", recursively: false) {
-        
-//        // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-//            if let diceNodeOld = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
-//                if let mycount = diceLocations?.count {
-//                    print("-------- mycount = ", mycount)
-//                for i in 0...(mycount - 1) {
-//                    print("--------x = ", diceLocations?[i].diceLocx as Any,
-//                          " y = ", diceLocations?[i].diceLocy as Any,
-//                          " z = ", diceLocations?[i].diceLocz as Any
-//                     )
-//                    diceNodeOld.position = SCNVector3(
-//                        x: (diceLocations?[i].diceLocx)!,
-//                        y: (diceLocations?[i].diceLocy)!,
-//                        z: (diceLocations?[i].diceLocz)!
-//                    )
-//                    sceneView.scene.rootNode.addChildNode(diceNodeOld)
-//                }
-//                }
-//            } // I add nov-5-2019    add previous dices onto scene
-//        // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  
         // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
         let ohOh = true
         if ohOh {
-            if let diceNodeOld = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
-                 print("--------x = ", diceLocations?[0].diceLocx as Any,
-                          " y = ", diceLocations?[0].diceLocy as Any,
-                          " z = ", diceLocations?[0].diceLocz as Any
-                     )
+            if let mycount = diceLocations?.count {
+                // location 0 is used to display lamp
+                // we use location 1 to max to display dice
+                for i in 1...(mycount - 1) {
+            if let diceNodeOld = oldDiceScene.rootNode.childNode(withName: "Dice", recursively: true) {
+                 print("-------- x = ", diceLocations?[i].diceLocx as Any, " y = ", diceLocations?[i].diceLocy as Any, " z = ", diceLocations?[i].diceLocz as Any )
                     diceNodeOld.position = SCNVector3(
-                        x: (diceLocations?[0].diceLocx)!,
-                        y: (diceLocations?[0].diceLocy)!,
-                        z: (diceLocations?[0].diceLocz)!
-                    )
+                        x: (diceLocations?[i].diceLocx)!,
+                        y: (diceLocations?[i].diceLocy)!,
+                        z: (diceLocations?[i].diceLocz)!    )
                     sceneView.scene.rootNode.addChildNode(diceNodeOld)
-                diceNodeOld.position = SCNVector3(
-                    x: (diceLocations?[2].diceLocx)!,
-                    y: (diceLocations?[2].diceLocy)!,
-                    z: (diceLocations?[2].diceLocz)!
-                )
-                sceneView.scene.rootNode.addChildNode(diceNodeOld)
-            } // I add nov-5-2019    add previous dices onto scene
+            } // I add nov-5-2019    if let diceNodeOld =
+            } // for i in ...
+            } // let mycount =
         }
-        // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
         
         // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-            // if let diceNodeOld1 = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
             if let diceNodeOld1 = lampScene.rootNode.childNode(withName: "Circle", recursively: true) {
                  print("--------x 1 = ", diceLocations?[0].diceLocx as Any,
                           " y 1 = ", diceLocations?[0].diceLocy as Any,
                           " z 1 = ", diceLocations?[0].diceLocz as Any
                      )
                     diceNodeOld1.position = SCNVector3(
-                        x: (diceLocations?[1].diceLocx)!,
-                        y: (diceLocations?[1].diceLocy)!,
-                        z: (diceLocations?[1].diceLocz)!
+                        x: (diceLocations?[0].diceLocx)!,
+                        y: (diceLocations?[0].diceLocy)!,
+                        z: (diceLocations?[0].diceLocz)!
                     )
                     sceneView.scene.rootNode.addChildNode(diceNodeOld1)
             } // I add nov-5-2019    add previous dices onto scene
-            else {
-                print ("no diceNodeOld1 !!! ")
-                }
-        // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+            else {  print ("no diceNodeOld1 !!! ")   }
+
                 
-            } // if addOldDice == true
+        } // if addOldDice == true
         
         //***************************************************************
     }
