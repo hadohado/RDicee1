@@ -35,7 +35,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         //***************************************************************
         // I add I move this from inside if() below to up here nov-5-5019
         // Create a new scene
-        let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
+        // let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
         
         let oldDiceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
         
@@ -47,26 +47,41 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let ohOh = true
         if ohOh {
             if let mycount = diceLocations?.count {
+                print(" !!!!!!!!! mycount = ", mycount)
                 // location 0 is used to display lamp
                 // we use location 1 to max to display dice
                 for i in 1...(mycount - 1) {
-            if let diceNodeOld = oldDiceScene.rootNode.childNode(withName: "Dice", recursively: true) {
-                 print("-------- x = ", diceLocations?[i].diceLocx as Any, " y = ", diceLocations?[i].diceLocy as Any, " z = ", diceLocations?[i].diceLocz as Any )
+                    print("-------- i = ", i)
+            // if let diceNodeOld = oldDiceScene.rootNode.childNode(withName: "Dice", recursively: true) {
+                    if let diceNodeOld = oldDiceScene.rootNode.childNode(withName: "Dice", recursively: true) {
+                // let oldDiceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
+                 print(" i = ", i, " -------- x OLD = ", diceLocations?[i].diceLocx as Any, " y = ", diceLocations?[i].diceLocy as Any, " z = ", diceLocations?[i].diceLocz as Any )
                     diceNodeOld.position = SCNVector3(
                         x: (diceLocations?[i].diceLocx)!,
                         y: (diceLocations?[i].diceLocy)!,
                         z: (diceLocations?[i].diceLocz)!    )
                     sceneView.scene.rootNode.addChildNode(diceNodeOld)
             } // I add nov-5-2019    if let diceNodeOld =
+            else {
+                        let oldDiceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
+                        
+                    print("something strange here i = ", i)
+            let diceNodeOld = oldDiceScene.rootNode.childNode(withName: "Dice", recursively: true)
+                        diceNodeOld?.position = SCNVector3(
+                        x: (diceLocations?[i].diceLocx)!,
+                        y: (diceLocations?[i].diceLocy)!,
+                        z: (diceLocations?[i].diceLocz)!    )
+                        sceneView.scene.rootNode.addChildNode(diceNodeOld!)
+            }
             } // for i in ...
             } // let mycount =
         }
         
         // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
             if let diceNodeOld1 = lampScene.rootNode.childNode(withName: "Circle", recursively: true) {
-                 print("--------x 1 = ", diceLocations?[0].diceLocx as Any,
-                          " y 1 = ", diceLocations?[0].diceLocy as Any,
-                          " z 1 = ", diceLocations?[0].diceLocz as Any
+                 print("--------x LAMP = ", diceLocations?[0].diceLocx as Any,
+                          " y  = ", diceLocations?[0].diceLocy as Any,
+                          " z  = ", diceLocations?[0].diceLocz as Any
                      )
                     diceNodeOld1.position = SCNVector3(
                         x: (diceLocations?[0].diceLocx)!,
@@ -114,41 +129,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let results = sceneView.hitTest(touchLocation, types: .existingPlaneUsingExtent)
  
 
-            // I add I move this from inside if() below to up here nov-5-5019
-            // Create a new scene
-            let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
-
-
-/*
-            ///        if let hitResult = results.first {
-
-                // Create a new scene
-                // let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
-
-                if addOldDice == true {
-                // I add nov-5-2019    add previous dices onto scene
-                if let diceNodeOld = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
-                    
-                    if let mycount = diceLocations?.count {
-                        print("-------- mycount = ", mycount)
-                    for i in 0...(mycount - 1) {
-                        print("--------x = ", diceLocations?[i].diceLocx )
-                        diceNodeOld.position = SCNVector3(
-                            x: (diceLocations?[i].diceLocx)!,
-                            y: (diceLocations?[i].diceLocy)!,
-                            z: (diceLocations?[i].diceLocz)!
-                        )
-                        sceneView.scene.rootNode.addChildNode(diceNodeOld)
-                    }
-                    }
-                    
-                } // I add nov-5-2019    add previous dices onto scene
-                } // if addOldDice == true
-*/
             
             if let hitResult = results.first {
-                if addOldDice == false {
-                // if addOldDice == true {
+                // if addOldDice == false {
+                if addOldDice == true {
+                let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
                 if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
                     diceNode.position = SCNVector3(
                         x: hitResult.worldTransform.columns.3.x,
