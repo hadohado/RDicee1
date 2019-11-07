@@ -40,7 +40,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let oldDiceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
         
         let lampScene = SCNScene(named: "art.scnassets/lamp_dae.scn")!
-
+        
+        if !addOldDice {
+            let diceLocation = DiceLocation()
+            diceLocation.diceLocx = 0.2
+            diceLocation.diceLocy = 0
+            diceLocation.diceLocz = -0.5
+            self.save(diceLocation: diceLocation)
+        }
             if addOldDice == true {
  
         // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -51,7 +58,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 // location 0 is used to display lamp
                 // we use location 1 to max to display dice
                 for i in 1...(mycount - 1) {
-                    print("-------- i = ", i)
+                    print("--> i = ", i)
             // if let diceNodeOld = oldDiceScene.rootNode.childNode(withName: "Dice", recursively: true) {
                     if let diceNodeOld = oldDiceScene.rootNode.childNode(withName: "Dice", recursively: true) {
                 // let oldDiceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!

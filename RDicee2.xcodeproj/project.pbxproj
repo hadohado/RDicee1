@@ -22,7 +22,7 @@
 		1CCBA80133223A937077D58A /* Pods-RDicee1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDicee1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RDicee1/Pods-RDicee1.debug.xcconfig"; sourceTree = "<group>"; };
 		7BDF0D2C237162570062147D /* DiceLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceLocation.swift; sourceTree = "<group>"; };
 		7BDF0D2E237180590062147D /* addOldDiceCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addOldDiceCode.swift; sourceTree = "<group>"; };
-		ADFDF1441F165E55005185EB /* RDicee1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RDicee1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADFDF1441F165E55005185EB /* RDicee2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RDicee2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFDF1471F165E55005185EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADFDF1491F165E55005185EB /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		ADFDF14B1F165E55005185EB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 		ADFDF1451F165E55005185EB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ADFDF1441F165E55005185EB /* RDicee1.app */,
+				ADFDF1441F165E55005185EB /* RDicee2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,9 +108,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ADFDF1431F165E55005185EB /* RDicee1 */ = {
+		ADFDF1431F165E55005185EB /* RDicee2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ADFDF1581F165E55005185EB /* Build configuration list for PBXNativeTarget "RDicee1" */;
+			buildConfigurationList = ADFDF1581F165E55005185EB /* Build configuration list for PBXNativeTarget "RDicee2" */;
 			buildPhases = (
 				EC114CBE3DA163EE3DF4D66E /* [CP] Check Pods Manifest.lock */,
 				ADFDF1401F165E55005185EB /* Sources */,
@@ -122,9 +122,9 @@
 			);
 			dependencies = (
 			);
-			name = RDicee1;
+			name = RDicee2;
 			productName = "Real Dicee";
-			productReference = ADFDF1441F165E55005185EB /* RDicee1.app */;
+			productReference = ADFDF1441F165E55005185EB /* RDicee2.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -143,7 +143,7 @@
 					};
 				};
 			};
-			buildConfigurationList = ADFDF13F1F165E55005185EB /* Build configuration list for PBXProject "RDicee1" */;
+			buildConfigurationList = ADFDF13F1F165E55005185EB /* Build configuration list for PBXProject "RDicee2" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -156,7 +156,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ADFDF1431F165E55005185EB /* RDicee1 */,
+				ADFDF1431F165E55005185EB /* RDicee2 */,
 			);
 		};
 /* End PBXProject section */
@@ -377,7 +377,7 @@
 				DEVELOPMENT_TEAM = X4Q9MUR658;
 				INFOPLIST_FILE = "Real Dicee/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alpine.RDicee1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alpine.RDicee2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -392,7 +392,7 @@
 				DEVELOPMENT_TEAM = X4Q9MUR658;
 				INFOPLIST_FILE = "Real Dicee/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.alpine.RDicee1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alpine.RDicee2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -402,7 +402,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		ADFDF13F1F165E55005185EB /* Build configuration list for PBXProject "RDicee1" */ = {
+		ADFDF13F1F165E55005185EB /* Build configuration list for PBXProject "RDicee2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ADFDF1561F165E55005185EB /* Debug */,
@@ -411,7 +411,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ADFDF1581F165E55005185EB /* Build configuration list for PBXNativeTarget "RDicee1" */ = {
+		ADFDF1581F165E55005185EB /* Build configuration list for PBXNativeTarget "RDicee2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ADFDF1591F165E55005185EB /* Debug */,
