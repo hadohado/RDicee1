@@ -134,9 +134,40 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let touchLocation = touch.location(in: sceneView)
             
             let results = sceneView.hitTest(touchLocation, types: .existingPlaneUsingExtent)
- 
-
+         
             
+            ///////////////////////////////////////////////////////////
+            let resultsFeaturePoint = sceneView.hitTest(touchLocation, types: .featurePoint)
+
+            if let hitResult = resultsFeaturePoint.first {
+                // if addOldDice == false {
+                if addOldDice == true {
+                let diceScene = SCNScene(named: "art.scnassets/Orange.scn")!
+                if let diceNode = diceScene.rootNode.childNode(withName: "Orange", recursively: true) {
+                    diceNode.position = SCNVector3(
+                        x: hitResult.worldTransform.columns.3.x,
+                        y: hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius,
+                        z: hitResult.worldTransform.columns.3.z
+                    )
+
+                    // I add nov-5-2019  save dice location to Realm database
+                    let diceLocation = DiceLocation()
+                    diceLocation.diceLocx = hitResult.worldTransform.columns.3.x
+                    diceLocation.diceLocy = hitResult.worldTransform.columns.3.y
+                    diceLocation.diceLocz = hitResult.worldTransform.columns.3.z
+                    self.save(diceLocation: diceLocation)
+                    sceneView.scene.rootNode.addChildNode(diceNode)
+                    
+                    let randomX = Float((arc4random_uniform(4) + 1)) * (Float.pi/2)
+                    //        let randomY = Double((arc4random_uniform(10) + 11)) * (Double.pi/2)
+                    let randomZ = Float((arc4random_uniform(4) + 1)) * (Float.pi/2)
+                    
+                    diceNode.runAction(SCNAction.rotateBy(x: CGFloat(randomX * 5), y: 0, z: CGFloat(randomZ * 5), duration: 0.5))
+                }
+            } // loop
+            }
+            
+            ///////////////////////////////////////////////////////////
             if let hitResult = results.first {
                 // if addOldDice == false {
                 if addOldDice == true {
