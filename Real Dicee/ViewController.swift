@@ -70,8 +70,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     sceneView.scene.rootNode.addChildNode(diceNodeOld)
             } // I add nov-5-2019    if let diceNodeOld =
             else {
-                        let oldDiceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
-                        
+                let oldDiceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
+                
                     print("something strange here i = ", i)
             let diceNodeOld = oldDiceScene.rootNode.childNode(withName: "Dice", recursively: true)
                         diceNodeOld?.position = SCNVector3(
@@ -155,6 +155,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     diceLocation.diceLocx = hitResult.worldTransform.columns.3.x
                     diceLocation.diceLocy = hitResult.worldTransform.columns.3.y
                     diceLocation.diceLocz = hitResult.worldTransform.columns.3.z
+                    // diceLocation.type = "orange"
                     self.save(diceLocation: diceLocation)
                     sceneView.scene.rootNode.addChildNode(diceNode)
                     
