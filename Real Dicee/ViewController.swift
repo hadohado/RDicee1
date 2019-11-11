@@ -41,13 +41,30 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let lampScene = SCNScene(named: "art.scnassets/lamp_dae.scn")!
         
+        
+        
         if !addOldDice {
+        // if let mycount = diceLocations?.count {
+            // if mycount == 0{
+            // print("just starting, number of dice is 0")
+                
             let diceLocation = DiceLocation()
             diceLocation.diceLocx = 0.2
             diceLocation.diceLocy = 0
             diceLocation.diceLocz = -0.5
             self.save(diceLocation: diceLocation)
+            
+            let diceLocationa = DiceLocation()
+            diceLocationa.diceLocx = 0.5
+            diceLocationa.diceLocy = 0
+            diceLocationa.diceLocz = -0.7
+            self.save(diceLocation: diceLocationa)
+            // }
         }
+        
+        
+        
+        
             if addOldDice == true {
  
         // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -145,10 +162,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 let diceScene = SCNScene(named: "art.scnassets/Orange.scn")!
                 if let diceNode = diceScene.rootNode.childNode(withName: "Orange", recursively: true) {
                     diceNode.position = SCNVector3(
-                        x: hitResult.worldTransform.columns.3.x,
-                        y: hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius,
-                        z: hitResult.worldTransform.columns.3.z
-                    )
+                        x: 0, y: 0, z: -0.05
+                        )
+//                        x: hitResult.worldTransform.columns.3.x,
+//                        y: hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius,
+//                        z: hitResult.worldTransform.columns.3.z
+                    // )
 
                     // I add nov-5-2019  save dice location to Realm database
                     let diceLocation = DiceLocation()
