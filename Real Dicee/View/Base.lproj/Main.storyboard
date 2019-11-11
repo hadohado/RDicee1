@@ -48,7 +48,7 @@
         <!--Item-->
         <scene sceneID="6uV-Bj-7Od">
             <objects>
-                <tableViewController id="ync-4Z-it4" sceneMemberID="viewController">
+                <tableViewController id="ync-4Z-it4" customClass="ItemTableViewController" customModule="RDicee3" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TableRowItem" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="b0B-D9-FQ8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
