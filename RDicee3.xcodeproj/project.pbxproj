@@ -7,20 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48E6C2E198272C14D0CACD38 /* Pods_RDicee3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 688FE12439C4FE612E9885CD /* Pods_RDicee3.framework */; };
 		7BDF0D2D237162570062147D /* DiceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDF0D2C237162570062147D /* DiceLocation.swift */; };
+		7BF50777237946E0000D81FE /* ItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF50776237946E0000D81FE /* ItemTableViewController.swift */; };
+		7BF5077923794735000D81FE /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF5077823794735000D81FE /* SwipeTableViewController.swift */; };
+		7BF5077C23794B3B000D81FE /* README.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF5077B23794B3B000D81FE /* README.swift */; };
 		ADFDF1481F165E55005185EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFDF1471F165E55005185EB /* AppDelegate.swift */; };
 		ADFDF14A1F165E55005185EB /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = ADFDF1491F165E55005185EB /* art.scnassets */; };
 		ADFDF14C1F165E55005185EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFDF14B1F165E55005185EB /* ViewController.swift */; };
 		ADFDF14F1F165E55005185EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFDF14D1F165E55005185EB /* Main.storyboard */; };
 		ADFDF1511F165E55005185EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADFDF1501F165E55005185EB /* Assets.xcassets */; };
 		ADFDF1541F165E55005185EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFDF1521F165E55005185EB /* LaunchScreen.storyboard */; };
-		C41B0F3BFCE2FE8696FF4860 /* Pods_RDicee2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD054173B2D11034DB297CB /* Pods_RDicee2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04AD1A89C6E98A081C6B8166 /* Pods-RDicee3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDicee3.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RDicee3/Pods-RDicee3.debug.xcconfig"; sourceTree = "<group>"; };
+		1106CBAA045815B9BD3A0760 /* Pods-RDicee3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDicee3.release.xcconfig"; path = "Pods/Target Support Files/Pods-RDicee3/Pods-RDicee3.release.xcconfig"; sourceTree = "<group>"; };
 		25C0BC6E62393B0307FCE123 /* Pods-RDicee2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDicee2.release.xcconfig"; path = "Pods/Target Support Files/Pods-RDicee2/Pods-RDicee2.release.xcconfig"; sourceTree = "<group>"; };
 		45300E7AB41EFB8F6515E9CA /* Pods-RDicee2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDicee2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RDicee2/Pods-RDicee2.debug.xcconfig"; sourceTree = "<group>"; };
+		688FE12439C4FE612E9885CD /* Pods_RDicee3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RDicee3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BDF0D2C237162570062147D /* DiceLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceLocation.swift; sourceTree = "<group>"; };
+		7BF50776237946E0000D81FE /* ItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewController.swift; sourceTree = "<group>"; };
+		7BF5077823794735000D81FE /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
+		7BF5077B23794B3B000D81FE /* README.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = README.swift; sourceTree = "<group>"; };
 		ADFDF1441F165E55005185EB /* RDicee3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RDicee3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFDF1471F165E55005185EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADFDF1491F165E55005185EB /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -29,7 +38,6 @@
 		ADFDF1501F165E55005185EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADFDF1531F165E55005185EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ADFDF1551F165E55005185EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CDD054173B2D11034DB297CB /* Pods_RDicee2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RDicee2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C41B0F3BFCE2FE8696FF4860 /* Pods_RDicee2.framework in Frameworks */,
+				48E6C2E198272C14D0CACD38 /* Pods_RDicee3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,6 +57,8 @@
 			children = (
 				45300E7AB41EFB8F6515E9CA /* Pods-RDicee2.debug.xcconfig */,
 				25C0BC6E62393B0307FCE123 /* Pods-RDicee2.release.xcconfig */,
+				04AD1A89C6E98A081C6B8166 /* Pods-RDicee3.debug.xcconfig */,
+				1106CBAA045815B9BD3A0760 /* Pods-RDicee3.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -61,10 +71,28 @@
 			path = "Data Model";
 			sourceTree = "<group>";
 		};
+		7BF50774237945DF000D81FE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ADFDF14D1F165E55005185EB /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BF50775237945EF000D81FE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ADFDF14B1F165E55005185EB /* ViewController.swift */,
+				7BF50776237946E0000D81FE /* ItemTableViewController.swift */,
+				7BF5077823794735000D81FE /* SwipeTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		8A73B8A3BDD2BBFE58B982BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CDD054173B2D11034DB297CB /* Pods_RDicee2.framework */,
+				688FE12439C4FE612E9885CD /* Pods_RDicee3.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -90,9 +118,10 @@
 		ADFDF1461F165E55005185EB /* Real Dicee */ = {
 			isa = PBXGroup;
 			children = (
+				7BF5077B23794B3B000D81FE /* README.swift */,
 				ADFDF1471F165E55005185EB /* AppDelegate.swift */,
-				ADFDF14B1F165E55005185EB /* ViewController.swift */,
-				ADFDF14D1F165E55005185EB /* Main.storyboard */,
+				7BF50775237945EF000D81FE /* Controller */,
+				7BF50774237945DF000D81FE /* View */,
 				7BDF0D2B2371620E0062147D /* Data Model */,
 				ADFDF1491F165E55005185EB /* art.scnassets */,
 				ADFDF1501F165E55005185EB /* Assets.xcassets */,
@@ -178,23 +207,21 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-RDicee2/Pods-RDicee2-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-RDicee3/Pods-RDicee3-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RDicee2/Pods-RDicee2-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RDicee3/Pods-RDicee3-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EC114CBE3DA163EE3DF4D66E /* [CP] Check Pods Manifest.lock */ = {
@@ -212,7 +239,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RDicee2-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-RDicee3-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -228,7 +255,10 @@
 			files = (
 				ADFDF14C1F165E55005185EB /* ViewController.swift in Sources */,
 				7BDF0D2D237162570062147D /* DiceLocation.swift in Sources */,
+				7BF50777237946E0000D81FE /* ItemTableViewController.swift in Sources */,
 				ADFDF1481F165E55005185EB /* AppDelegate.swift in Sources */,
+				7BF5077923794735000D81FE /* SwipeTableViewController.swift in Sources */,
+				7BF5077C23794B3B000D81FE /* README.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,7 +397,7 @@
 		};
 		ADFDF1591F165E55005185EB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45300E7AB41EFB8F6515E9CA /* Pods-RDicee2.debug.xcconfig */;
+			baseConfigurationReference = 04AD1A89C6E98A081C6B8166 /* Pods-RDicee3.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = X4Q9MUR658;
@@ -382,7 +412,7 @@
 		};
 		ADFDF15A1F165E55005185EB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 25C0BC6E62393B0307FCE123 /* Pods-RDicee2.release.xcconfig */;
+			baseConfigurationReference = 1106CBAA045815B9BD3A0760 /* Pods-RDicee3.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = X4Q9MUR658;

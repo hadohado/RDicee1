@@ -11,6 +11,8 @@ import SceneKit
 import ARKit
 import RealmSwift
 
+import SwipeCellKit
+
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     var addOldDice = true
