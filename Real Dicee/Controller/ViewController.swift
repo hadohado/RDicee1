@@ -16,7 +16,7 @@ import SwipeCellKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     var textField = UITextField()
-
+    
     var addOldDice = true
     
     let realm = try! Realm() // I add nov-5-2019
@@ -27,6 +27,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        textField.text = "dummy start"
+        
         loadDiceLocations() // I add nov-5-2019 (load previous dice based on previous locations
         
         // Set the view's delegate
@@ -164,19 +167,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 // if addOldDice == false {
                 if addOldDice == true {
 
-                    //================================
-                    // var textField = UITextField()
-                    let alert = UIAlertController(title: "Add New Thing", message: "", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "Add", style: .default) { (action) in
-                        print("AlertACtion --------------- = ", self.textField.text!)
-                    }
-                    alert.addAction(action)
-                    alert.addTextField { (field) in
-                        self.textField = field
-                        self.textField.placeholder = "Add a new thing"
-                    }
-                    // AlertACtion --------------- =  <_UIAlertControllerTextField: 0x119344120; frame = (7 6.5; 225 21); text = 'gold'; opaque = NO; gestureRecognizers = <NSArray: 0x281796220>; layer = <CALayer: 0x2818048a0>>
-                    present(alert, animated: true, completion: nil)
+//                    //================================
+//                    // var textField = UITextField()
+//                    let alert = UIAlertController(title: "Add New Thing", message: "", preferredStyle: .alert)
+//                    let action = UIAlertAction(title: "Add", style: .default) { (action) in
+//                        print("AlertACtion --------------- = ", self.textField.text!)
+//                    }
+//                    alert.addAction(action)
+//                    alert.addTextField { (field) in
+//                        self.textField = field
+//                        self.textField.placeholder = "Add a new thing"
+//                    }
+//                    present(alert, animated: true, completion: nil)
                     //,,,,,,,,,,,,,,,,,,,,,,,,,,,
                     
                 let diceScene = SCNScene(named: "art.scnassets/Orange.scn")!
@@ -196,7 +198,25 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     diceLocation.diceLocz = hitResult.worldTransform.columns.3.z
                     // diceLocation.type = "orange"
                     
+                    //================================
+                    // var textField = UITextField()
+                    let alert = UIAlertController(title: "Add New Thing", message: "", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Add", style: .default) { (action) in
+                        print("AlertACtion --------------- = ", self.textField.text!)
+                    }
+                    alert.addAction(action)
+                    alert.addTextField { (field) in
+                        self.textField = field
+                        self.textField.placeholder = "Add a new thing"
+                    }
+                    present(alert, animated: true, completion: nil)
+                    //,,,,,,,,,,,,,,,,,,,,,,,,,,,
+                    
                     diceLocation.name = textField.text! // add nov-12
+                    print(">>>>>>>>>> feature point diceLocation.name = ", diceLocation.name)
+                    
+                    diceLocation.name = "fake" + "\(diceLocation.diceLocx)"
+                    
                     print(">>>>>>>>>> feature point diceLocation.name = ", diceLocation.name)
                     self.save(diceLocation: diceLocation)
                     sceneView.scene.rootNode.addChildNode(diceNode)
@@ -228,11 +248,25 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     diceLocation.diceLocy = hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius
                     diceLocation.diceLocz = hitResult.worldTransform.columns.3.z
                     
-                    diceLocation.name = textField.text! // add nov-12
+        //  diceLocation.name = textField.text! // add nov-12
                     print(">>>>>>>>>> plane textField.text = ", textField.text!)
                     print(">>>>>>>>>> plane diceLocation.name = ", diceLocation.name)
                     self.save(diceLocation: diceLocation)
                     sceneView.scene.rootNode.addChildNode(diceNode)
+                    
+                    //================================
+                    // var textField = UITextField()
+                    let alert = UIAlertController(title: "Add New Thing", message: "", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Add", style: .default) { (action) in
+                        print("AlertACtion --------------- = ", self.textField.text!)
+                    }
+                    alert.addAction(action)
+                    alert.addTextField { (field) in
+                        self.textField = field
+                        self.textField.placeholder = "Add a new thing"
+                    }
+                    present(alert, animated: true, completion: nil)
+                    //,,,,,,,,,,,,,,,,,,,,,,,,,,,
                     
                     let randomX = Float((arc4random_uniform(4) + 1)) * (Float.pi/2)
                     //        let randomY = Double((arc4random_uniform(10) + 11)) * (Double.pi/2)
