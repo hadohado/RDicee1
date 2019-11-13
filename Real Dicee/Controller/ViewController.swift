@@ -15,6 +15,8 @@ import SwipeCellKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
+    var textField = UITextField()
+
     var addOldDice = true
     
     let realm = try! Realm() // I add nov-5-2019
@@ -163,15 +165,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 if addOldDice == true {
 
                     //================================
-                    var textField = UITextField()
+                    // var textField = UITextField()
                     let alert = UIAlertController(title: "Add New Thing", message: "", preferredStyle: .alert)
                     let action = UIAlertAction(title: "Add", style: .default) { (action) in
-                        print("AlertACtion --------------- = ", textField.text)
+                        print("AlertACtion --------------- = ", self.textField.text!)
                     }
                     alert.addAction(action)
                     alert.addTextField { (field) in
-                        textField = field
-                        textField.placeholder = "Add a new thing"
+                        self.textField = field
+                        self.textField.placeholder = "Add a new thing"
                     }
                     // AlertACtion --------------- =  <_UIAlertControllerTextField: 0x119344120; frame = (7 6.5; 225 21); text = 'gold'; opaque = NO; gestureRecognizers = <NSArray: 0x281796220>; layer = <CALayer: 0x2818048a0>>
                     present(alert, animated: true, completion: nil)
@@ -193,6 +195,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     diceLocation.diceLocy = hitResult.worldTransform.columns.3.y
                     diceLocation.diceLocz = hitResult.worldTransform.columns.3.z
                     // diceLocation.type = "orange"
+                    
+                    diceLocation.name = textField.text! // add nov-12
+                    print(">>>>>>>>>> feature point diceLocation.name = ", diceLocation.name)
                     self.save(diceLocation: diceLocation)
                     sceneView.scene.rootNode.addChildNode(diceNode)
                     
@@ -222,6 +227,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     diceLocation.diceLocx = hitResult.worldTransform.columns.3.x
                     diceLocation.diceLocy = hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius
                     diceLocation.diceLocz = hitResult.worldTransform.columns.3.z
+                    
+                    diceLocation.name = textField.text! // add nov-12
+                    print(">>>>>>>>>> plane textField.text = ", textField.text!)
+                    print(">>>>>>>>>> plane diceLocation.name = ", diceLocation.name)
                     self.save(diceLocation: diceLocation)
                     sceneView.scene.rootNode.addChildNode(diceNode)
                     

@@ -54,7 +54,10 @@ class ItemTableViewController: SwipeTableViewController {
         // let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
         
         if let category = categories?[indexPath.row] {
-            cell.textLabel?.text = "\(category.diceLocx + category.diceLocy + category.diceLocz)"
+            print(">>>>>>>>>> ItemTableVC diceLocation.name = ", category.name, " locx =", category.diceLocx, " y =", category.diceLocy)
+            
+            cell.textLabel?.text = "\(category.name)" // nov-12-2019
+            // cell.textLabel?.text = "\(category.diceLocx + category.diceLocy + category.diceLocz)"
             // guard let categoryColour = UIColor(named: category.colour) else {print("error") }
             // cell.backgroundColor = categoryColour
             // cell.textLabel?.textColor = UIColor.green

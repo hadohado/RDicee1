@@ -18,7 +18,7 @@ class DiceLocation: Object {
     @objc dynamic var diceLocx: Float = 0
     @objc dynamic var diceLocy: Float = 0
     @objc dynamic var diceLocz: Float = 0
-    @objc dynamic var name:    String = ""
+    @objc dynamic var name:    String = "xyz"
     // @objc dynamic var type:    String = ""
     
     // @objc dynamic var name: String = ""
