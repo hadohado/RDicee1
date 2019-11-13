@@ -161,6 +161,22 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             if let hitResult = resultsFeaturePoint.first {
                 // if addOldDice == false {
                 if addOldDice == true {
+
+                    //================================
+                    var textField = UITextField()
+                    let alert = UIAlertController(title: "Add New Thing", message: "", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Add", style: .default) { (action) in
+                        print("AlertACtion --------------- = ", textField.text)
+                    }
+                    alert.addAction(action)
+                    alert.addTextField { (field) in
+                        textField = field
+                        textField.placeholder = "Add a new thing"
+                    }
+                    // AlertACtion --------------- =  <_UIAlertControllerTextField: 0x119344120; frame = (7 6.5; 225 21); text = 'gold'; opaque = NO; gestureRecognizers = <NSArray: 0x281796220>; layer = <CALayer: 0x2818048a0>>
+                    present(alert, animated: true, completion: nil)
+                    //,,,,,,,,,,,,,,,,,,,,,,,,,,,
+                    
                 let diceScene = SCNScene(named: "art.scnassets/Orange.scn")!
                 if let diceNode = diceScene.rootNode.childNode(withName: "Orange", recursively: true) {
                     diceNode.position = SCNVector3(
