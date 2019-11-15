@@ -16,6 +16,7 @@ import SwipeCellKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     var textField = UITextField()
+    // textField.text = "this is dummy"
     
     var addOldDice = true
     
@@ -197,9 +198,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     diceLocation.diceLocy = hitResult.worldTransform.columns.3.y
                     diceLocation.diceLocz = hitResult.worldTransform.columns.3.z
                     // diceLocation.type = "orange"
+      
+    // MARK - this is a popup
+                    var mypopup = PopupCls()
                     
                     //================================
+                    
                     // var textField = UITextField()
+    var enablePopup = false
+                    if enablePopup {
                     let alert = UIAlertController(title: "Add New Thing", message: "", preferredStyle: .alert)
                     let action = UIAlertAction(title: "Add", style: .default) { (action) in
                         print("AlertACtion --------------- = ", self.textField.text!)
@@ -210,6 +217,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         self.textField.placeholder = "Add a new thing"
                     }
                     present(alert, animated: true, completion: nil)
+                    }
+                    
                     //,,,,,,,,,,,,,,,,,,,,,,,,,,,
                     
                     diceLocation.name = textField.text! // add nov-12
@@ -326,3 +335,27 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // tableView.reloadData()
     }
 }
+
+//class PopupCls {
+//
+//    override func popup(completion: (_ popupResult: result) ) {
+//        var textField = UITextField()
+//
+//        let result = textField // nov-15
+//
+//        let alert = UIAlertController(title: "Add New Thing", message: "", preferredStyle: .alert)
+//
+//        let action = UIAlertAction(title: "Add", style: .default) { (action) in print("AlertACtion")
+//
+//            alert.addAction(action)
+//
+//            alert.addTextField { (field) in
+//                textField = field
+//                textField.placeholder = "Add a new thing"
+//                result = field // nov-15
+//            }
+//            present(alert, animated: true, completion: nil)
+//
+//        }
+//
+// }
