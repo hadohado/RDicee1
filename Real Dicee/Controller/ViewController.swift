@@ -19,7 +19,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     var globaltextField = UITextField()
     // textField.text = "this is dummy"
- 
+    
     var globaldiceLocation = DiceLocation() // nov-16
     
     let realm = try! Realm() // I add nov-5-2019
@@ -153,6 +153,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
     
+    fileprivate func extractedFunc() {
+        self.save(diceLocation: self.globaldiceLocation)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         if let touch = touches.first {
@@ -175,7 +179,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         print("AlertACtion --------------- = ", self.globaltextField.text!)
                         self.globaldiceLocation.name = self.globaltextField.text!
                         
-                        self.save(diceLocation: self.globaldiceLocation) // SAVE location !
+                        // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+                        // self.extractedFunc() // SAVE location ! <<<<<<<<<<<<<<<<<<<<<
+                        self.save(diceLocation: self.globaldiceLocation)
+                        // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
                     }
                     
                     alert.addAction(action)
@@ -210,7 +217,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         
                         print(">>>>>>>>>> feature point diceLocation.name = ", diceLocation.name)
                         
-                        self.save(diceLocation: diceLocation)
+                        // self.save(diceLocation: diceLocation)
                         
                         sceneView.scene.rootNode.addChildNode(diceNode)
                         
@@ -229,6 +236,28 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             if let hitResult = resultsPlane.first {
                 // if addOldDice == false {
                 if addOldDice == true {
+
+                    //================================
+                    // var textField = UITextField()
+                    let alert = UIAlertController(title: "Add in Plane", message: "", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Add", style: .default) { (action) in
+                        print("AlertACtion --------------- = ", self.globaltextField.text!)
+                        self.globaldiceLocation.name = self.globaltextField.text!
+                        
+                        // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+                        self.save(diceLocation: self.globaldiceLocation)
+                        // self.extractedFunc() // SAVE location ! <<<<<<<<<<<<<<<<<<<<<
+                        // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+                    }
+                    
+                    alert.addAction(action)
+                    alert.addTextField { (field) in
+                        self.globaltextField = field
+                        self.globaltextField.placeholder = "Add Plane"
+                    }
+                    present(alert, animated: true, completion: nil)
+                    
+                    
                     let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
                     if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
                         diceNode.position = SCNVector3(
@@ -253,22 +282,22 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         print(">>>>>>>>>> plane textField.text = ", globaltextField.text!)
                         print(">>>>>>>>>> plane diceLocation.name = ", diceLocation.name)
                         
-                        self.save(diceLocation: diceLocation) // <--- SAVE LOCATION !
+                       // self.save(diceLocation: diceLocation) // <--- SAVE LOCATION !
                         
                         sceneView.scene.rootNode.addChildNode(diceNode)
                         
                         //================================
-                        // var textField = UITextField()
-                        let alert = UIAlertController(title: "Add New Thing", message: "", preferredStyle: .alert)
-                        let action = UIAlertAction(title: "Add", style: .default) { (action) in
-                            print("AlertACtion --------------- = ", self.globaltextField.text!)
-                        }
-                        alert.addAction(action)
-                        alert.addTextField { (field) in
-                            self.globaltextField = field
-                            self.globaltextField.placeholder = "Add a new thing"
-                        }
-                        present(alert, animated: true, completion: nil)
+//                        // var textField = UITextField()
+//                        let alert = UIAlertController(title: "Add New Thing", message: "", preferredStyle: .alert)
+//                        let action = UIAlertAction(title: "Add", style: .default) { (action) in
+//                            print("AlertACtion --------------- = ", self.globaltextField.text!)
+//                        }
+//                        alert.addAction(action)
+//                        alert.addTextField { (field) in
+//                            self.globaltextField = field
+//                            self.globaltextField.placeholder = "Add a new thing"
+//                        }
+//                        present(alert, animated: true, completion: nil)
                         //,,,,,,,,,,,,,,,,,,,,,,,,,,,
                         
                         let randomX = Float((arc4random_uniform(4) + 1)) * (Float.pi/2)
@@ -344,7 +373,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 textField = field
                 textField.placeholder = "Add a new thing"
                 result = field // nov-15
-            // NEED to SAVE dice location here !
+                // NEED to SAVE dice location here !
             }
             self.present(alert, animated: true, completion: nil)
             
