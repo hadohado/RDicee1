@@ -1,9 +1,8 @@
 //
 //  ViewController.swift
-//  Real Dicee
+//  Dicee33
 //
-//  Created by Angela Yu on 12/07/2017.
-//  Copyright © 2017 Angela Yu. All rights reserved.
+//  Created by Alpine on 11/07/2019.
 //
 
 import UIKit
@@ -180,7 +179,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         self.globaldiceLocation.name = self.globaltextField.text!
                         
                         // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-                        // self.extractedFunc() // SAVE location ! <<<<<<<<<<<<<<<<<<<<<
                         self.save(diceLocation: self.globaldiceLocation)
                         // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
                     }
@@ -191,8 +189,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         self.globaltextField.placeholder = "Add a new thing"
                     }
                     present(alert, animated: true, completion: nil)
-                    
-                    
+                                        
                     let diceScene = SCNScene(named: "art.scnassets/Orange.scn")!
                     if let diceNode = diceScene.rootNode.childNode(withName: "Orange", recursively: true) {
                         diceNode.position = SCNVector3(
@@ -233,81 +230,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             ///////////////////////////////////////////////////////////
             // results in Plane
             ///////////////////////////////////////////////////////////
-            if let hitResult = resultsPlane.first {
-                // if addOldDice == false {
-                if addOldDice == true {
-
-                    //================================
-                    // var textField = UITextField()
-                    let alert = UIAlertController(title: "Add in Plane", message: "", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "Add", style: .default) { (action) in
-                        print("AlertACtion --------------- = ", self.globaltextField.text!)
-                        self.globaldiceLocation.name = self.globaltextField.text!
-                        
-                        // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-                        self.save(diceLocation: self.globaldiceLocation)
-                        // self.extractedFunc() // SAVE location ! <<<<<<<<<<<<<<<<<<<<<
-                        // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-                    }
-                    
-                    alert.addAction(action)
-                    alert.addTextField { (field) in
-                        self.globaltextField = field
-                        self.globaltextField.placeholder = "Add Plane"
-                    }
-                    present(alert, animated: true, completion: nil)
-                    
-                    
-                    let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
-                    if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
-                        diceNode.position = SCNVector3(
-                            x: hitResult.worldTransform.columns.3.x,
-                            y: hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius,
-                            z: hitResult.worldTransform.columns.3.z
-                        )
-                        
-                        // I add nov-5-2019  save dice location to Realm database
-                        let diceLocation = DiceLocation()
-                        diceLocation.diceLocx = hitResult.worldTransform.columns.3.x
-                        diceLocation.diceLocy = hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius
-                        diceLocation.diceLocz = hitResult.worldTransform.columns.3.z
-                        
-                        globaldiceLocation.diceLocx = hitResult.worldTransform.columns.3.x
-                        globaldiceLocation.diceLocy = hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius
-                        globaldiceLocation.diceLocz = hitResult.worldTransform.columns.3.z
-                        
-                        ///////////////////////////////////////////////////////
-                        
-                        //  diceLocation.name = textField.text! // add nov-12
-                        print(">>>>>>>>>> plane textField.text = ", globaltextField.text!)
-                        print(">>>>>>>>>> plane diceLocation.name = ", diceLocation.name)
-                        
-                       // self.save(diceLocation: diceLocation) // <--- SAVE LOCATION !
-                        
-                        sceneView.scene.rootNode.addChildNode(diceNode)
-                        
-                        //================================
-//                        // var textField = UITextField()
-//                        let alert = UIAlertController(title: "Add New Thing", message: "", preferredStyle: .alert)
-//                        let action = UIAlertAction(title: "Add", style: .default) { (action) in
-//                            print("AlertACtion --------------- = ", self.globaltextField.text!)
-//                        }
-//                        alert.addAction(action)
-//                        alert.addTextField { (field) in
-//                            self.globaltextField = field
-//                            self.globaltextField.placeholder = "Add a new thing"
-//                        }
-//                        present(alert, animated: true, completion: nil)
-                        //,,,,,,,,,,,,,,,,,,,,,,,,,,,
-                        
-                        let randomX = Float((arc4random_uniform(4) + 1)) * (Float.pi/2)
-                        //        let randomY = Double((arc4random_uniform(10) + 11)) * (Double.pi/2)
-                        let randomZ = Float((arc4random_uniform(4) + 1)) * (Float.pi/2)
-                        
-                        diceNode.runAction(SCNAction.rotateBy(x: CGFloat(randomX * 5), y: 0, z: CGFloat(randomZ * 5), duration: 0.5))
-                    }
-                } // loop
-            }
+            //            if let hitResult = resultsPlane.first {
+            //            }
         }
     }
     
@@ -358,50 +282,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // tableView.reloadData()
     }
     
-    func popup(IntextField: UITextField, IndiceLoc: DiceLocation) {
-        
-        var textField = IntextField
-        // var textField = UITextField()
-        
-        var result = textField // nov-15
-        
-        let alert = UIAlertController(title: "Add New Thing", message: "", preferredStyle: .alert)
-        
-        let action = UIAlertAction(title: "Add", style: .default) { (action) in print("AlertACtion")
-            alert.addAction(action)
-            alert.addTextField { (field) in
-                textField = field
-                textField.placeholder = "Add a new thing"
-                result = field // nov-15
-                // NEED to SAVE dice location here !
-            }
-            self.present(alert, animated: true, completion: nil)
-            
-        }
-    }
-    
 }
 
-//class PopupCls {
-//
-//    override func popup(completion: (_ popupResult: result) ) {
-//        var textField = UITextField()
-//
-//        let result = textField // nov-15
-//
-//        let alert = UIAlertController(title: "Add New Thing", message: "", preferredStyle: .alert)
-//
-//        let action = UIAlertAction(title: "Add", style: .default) { (action) in print("AlertACtion")
-//
-//            alert.addAction(action)
-//
-//            alert.addTextField { (field) in
-//                textField = field
-//                textField.placeholder = "Add a new thing"
-//                result = field // nov-15
-//            }
-//            present(alert, animated: true, completion: nil)
-//
-//        }
-//
-// }
+
