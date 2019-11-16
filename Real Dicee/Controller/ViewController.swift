@@ -200,26 +200,26 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     // diceLocation.type = "orange"
       
     // MARK - this is a popup
-                    var mypopup = PopupCls()
-                    
-                    //================================
-                    
-                    // var textField = UITextField()
-    var enablePopup = false
-                    if enablePopup {
-                    let alert = UIAlertController(title: "Add New Thing", message: "", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "Add", style: .default) { (action) in
-                        print("AlertACtion --------------- = ", self.textField.text!)
-                    }
-                    alert.addAction(action)
-                    alert.addTextField { (field) in
-                        self.textField = field
-                        self.textField.placeholder = "Add a new thing"
-                    }
-                    present(alert, animated: true, completion: nil)
-                    }
-                    
-                    //,,,,,,,,,,,,,,,,,,,,,,,,,,,
+//                    var mypopup = PopupCls()
+//
+//                    //================================
+//
+//                    // var textField = UITextField()
+//    var enablePopup = false
+//                    if enablePopup {
+//                    let alert = UIAlertController(title: "Add New Thing", message: "", preferredStyle: .alert)
+//                    let action = UIAlertAction(title: "Add", style: .default) { (action) in
+//                        print("AlertACtion --------------- = ", self.textField.text!)
+//                    }
+//                    alert.addAction(action)
+//                    alert.addTextField { (field) in
+//                        self.textField = field
+//                        self.textField.placeholder = "Add a new thing"
+//                    }
+//                    present(alert, animated: true, completion: nil)
+//                    }
+//
+//                    //,,,,,,,,,,,,,,,,,,,,,,,,,,,
                     
                     diceLocation.name = textField.text! // add nov-12
                     print(">>>>>>>>>> feature point diceLocation.name = ", diceLocation.name)
