@@ -21,6 +21,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     var globaldiceLocation = DiceLocation() // nov-16
     
+    var globalScenename = ""
+    var globalDaename = ""
+    
     let realm = try! Realm() // I add nov-5-2019
     
     var diceLocations: Results<DiceLocation>? // I add nov-5-2019
@@ -98,10 +101,21 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                             sceneView.scene.rootNode.addChildNode(diceNodeOld)
                         } // I add nov-5-2019    if let diceNodeOld =
                         else {
-                            let oldDiceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
-                            
                             print("something strange here i = ", i)
-                            let diceNodeOld = oldDiceScene.rootNode.childNode(withName: "Dice", recursively: true)
+ // let oldDiceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
+ // let diceNodeOld = oldDiceScene.rootNode.childNode(withName: "Dice", recursively: true)
+                            // globalScenename = "art.scnassets/diceCollada.scn"
+                            // globalDaename = "Dice"
+                            
+//                            globalScenename = "art.scnassets/Tree_frog.scn"
+//                            globalDaename = "tree_frog"
+                            
+                            globalScenename = "art.scnassets/spider_01.scn"
+                            globalDaename = "Mball_001"
+                            
+                            let oldDiceScene = SCNScene(named: globalScenename)!
+                            let diceNodeOld = oldDiceScene.rootNode.childNode(withName: globalDaename, recursively: true)
+                            
                             diceNodeOld?.position = SCNVector3(
                                 x: (diceLocations?[i].diceLocx)!,
                                 y: (diceLocations?[i].diceLocy)!,
@@ -189,9 +203,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         self.globaltextField.placeholder = "Add a new thing"
                     }
                     present(alert, animated: true, completion: nil)
-                                        
+ 
                     let diceScene = SCNScene(named: "art.scnassets/Orange.scn")!
                     if let diceNode = diceScene.rootNode.childNode(withName: "Orange", recursively: true) {
+                        
+//                    let diceScene = SCNScene(named: "art.scnassets/Tree_frog.scn")!
+//                    if let diceNode = diceScene.rootNode.childNode(withName: "tree_frog", recursively: true) {
                         diceNode.position = SCNVector3(
                             x: 0, y: 0, z: -0.05
                         )
@@ -206,13 +223,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         globaldiceLocation.diceLocy = hitResult.worldTransform.columns.3.y
                         globaldiceLocation.diceLocz = hitResult.worldTransform.columns.3.z
                         
-                        
                         diceLocation.name = globaltextField.text! // add nov-12
-                        print(">>>>>>>>>> feature point diceLocation.name = ", diceLocation.name)
-                        
-                        diceLocation.name = "fake" + "\(diceLocation.diceLocx)"
-                        
-                        print(">>>>>>>>>> feature point diceLocation.name = ", diceLocation.name)
                         
                         // self.save(diceLocation: diceLocation)
                         
