@@ -109,9 +109,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                             
 //                            globalScenename = "art.scnassets/Tree_frog.scn"
 //                            globalDaename = "tree_frog"
+
                             
-                            globalScenename = "art.scnassets/spider_01.scn"
-                            globalDaename = "Mball_001"
+                            if diceLocations?[i].name == "spider" {
+                                globalScenename = "art.scnassets/spider_01.scn"
+                                globalDaename = "Mball_001"
+                            }
+                            else if diceLocations?[i].name == "dice" {
+                                globalScenename = "art.scnassets/diceCollada.scn"
+                                globalDaename = "Dice"
+                            }
+                            else {
+                                globalScenename = "art.scnassets/Orange.scn"
+                                globalDaename = "Orange"
+                            }
                             
                             let oldDiceScene = SCNScene(named: globalScenename)!
                             let diceNodeOld = oldDiceScene.rootNode.childNode(withName: globalDaename, recursively: true)

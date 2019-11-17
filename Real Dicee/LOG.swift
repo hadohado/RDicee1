@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 //where Realm db located for Dice Loc  Optional(file:///var/mobile/Containers/Data/Application/4E0D7514-BAAB-4636-9D2F-431805675F92/Documents/default.realm)
 //2019-11-16 13:12:56.646672-0800 RDicee333[917:99474] Metal GPU Frame Capture Enabled
 //2019-11-16 13:12:56.647848-0800 RDicee333[917:99474] Metal API Validation Enabled

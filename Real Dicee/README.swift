@@ -8,6 +8,19 @@
 
 import Foundation
 
+//if globaldiceLocation.name == "spider" {
+//    globalScenename = "art.scnassets/spider_01.scn"
+//    globalDaename = "Mball_001"
+//}
+//else if globaldiceLocation.name == "dice" {
+//    globalScenename = "art.scnassets/diceCollada.scn"
+//    globalDaename = "Dice"
+//}
+//else {
+//    globalScenename = "art.scnassets/Orange.scn"
+//    globalDaename = "Orange"
+//}
+
 /*
  
 2019-11-12 16:10:14.521962-0800 RDicee333[4088:619246] Metal GPU Frame Capture Enabled
